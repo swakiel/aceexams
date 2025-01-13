@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent }from '@/components/ui/Card';
+import FormComponent from '@/components/ui/FormComponent';
 import { Calculator, User, Users, Award, ChevronRight, GraduationCap, BrainCircuit, Target } from 'lucide-react';
 
 
@@ -76,7 +77,7 @@ const TutoringHomepage = () => {
                 We are a team of Watford/Bushey-based maths tutors, dedicated and striving to making learning simpler, enjoyable and effective for every student.
               </p>
               <p className="text-xl text-gray-700">
-                Whether it's Year 4 or Year 11, our tailored approach ensures that each student’s learning style is met, giving them the best chance to succeed.
+                Whether it's Year 1 or Year 11, our tailored approach ensures that each student’s learning style is met, giving them the best chance to succeed.
               </p>
             </div>
 
@@ -99,44 +100,62 @@ const TutoringHomepage = () => {
       {/* Exam Stages Section */}
       <div className="bg-sky-200 py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#021141] text-center mb-12">Maths Support for every Level</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-3xl font-bold text-[#021141] text-center mb-12">
+            Maths Support for Every Level
+          </h2>
+          <div className="grid md:grid-cols-4 gap-8"> {/* Updated to 4 columns */}
+            {/* Basic Numeracy Card */}
             <Card className="p-6 bg-white">
-              <CardContent className="space-y-4 pt-4">
+              <CardContent className="space-y-4 pt-4 px-2">
+                <div className="h-12 w-12 bg-sky-100 rounded-full flex items-center justify-center">
+                  <Users className="h-6 w-6 text-sky-600" />
+                </div>
+                <h3 className="text-xl text-[#021141] font-semibold">Basic Numeracy</h3>
+                <p className="text-gray-600">
+                  Fun and engaging sessions designed for kids aged 5–10 to build confidence and fluency in essential numeracy skills, setting a strong foundation for their future learning.
+                </p>
+              </CardContent>
+            </Card>
+            {/* 11+ Card */}
+            <Card className="p-6 bg-white">
+              <CardContent className="space-y-4 pt-4 px-2">
                 <div className="h-12 w-12 bg-sky-100 rounded-full flex items-center justify-center">
                   <Target className="h-6 w-6 text-sky-600" />
                 </div>
                 <h3 className="text-xl text-[#021141] font-semibold">11+</h3>
                 <p className="text-gray-600">
-                  Comprehensive preparation for grammar school entrance exams, covering all key mathematical concepts
+                  Comprehensive preparation for grammar school entrance exams, covering all key mathematical concepts.
                 </p>
               </CardContent>
             </Card>
+            {/* SATs Card */}
             <Card className="p-6 bg-white">
-              <CardContent className="space-y-4 pt-4">
+              <CardContent className="space-y-4 pt-4 px-2">
                 <div className="h-12 w-12 bg-sky-100 rounded-full flex items-center justify-center">
                   <BrainCircuit className="h-6 w-6 text-sky-600" />
                 </div>
                 <h3 className="text-xl text-[#021141] font-semibold">SATs</h3>
                 <p className="text-gray-600">
-                  Targeted tutoring to ensure strong mathematical foundations and excellent KS2 results
+                  Targeted tutoring to ensure strong mathematical foundations and excellent KS2 results.
                 </p>
               </CardContent>
             </Card>
+            {/* GCSE Card */}
             <Card className="p-6 bg-white">
-              <CardContent className="space-y-4 pt-4">
+              <CardContent className="space-y-4 pt-4 px-2">
                 <div className="h-12 w-12 bg-sky-100 rounded-full flex items-center justify-center">
                   <Calculator className="h-6 w-6 text-sky-600" />
                 </div>
                 <h3 className="text-xl text-[#021141] font-semibold">GCSE</h3>
                 <p className="text-gray-600">
-                  Expert guidance for both Foundation and Higher tier GCSE Mathematics, helping students build a solid understanding of key concepts and excel in their exams
+                  Expert guidance for both Foundation and Higher tier GCSE Mathematics, helping students build a solid understanding of key concepts and excel in their exams.
                 </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </div>
+
 
       {/* Services Section */}
       <div className="bg-sky-100 py-16 px-4">
@@ -204,6 +223,20 @@ const TutoringHomepage = () => {
           </Link>
         </div>
       </div>
+
+
+      {/* Sign-Up Form Section */}
+      <div className="bg-sky-100 py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-[#021141] text-center mb-8">
+            Sign Up for a Free Trial Lesson
+          </h2>
+          <FormComponent />
+        </div>
+      </div>
+
+
+
 
       {/* Footer */}
       <footer className="bg-[#021141] text-white py-8">

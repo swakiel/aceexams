@@ -45,7 +45,7 @@ const ServicesPage = () => {
               <ul className="space-y-2">
                 <li className="flex items-center">
                   <ChevronRight className="h-4 w-4 text-sky-600 mr-2" />
-                  <span>Personalized learning plans</span>
+                  <span>Personalised learning plans</span>
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="h-4 w-4 text-sky-600 mr-2" />
