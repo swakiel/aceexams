@@ -15,7 +15,7 @@ const FormComponent = () => {
 
         try {
           // Change the fetch URL to match your Next.js 13 API route structure
-          const response = await fetch('/api/sendEmail/route', {
+          const response = await fetch('/api/sendEmail/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

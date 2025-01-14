@@ -1,28 +1,40 @@
+import 'dotenv/config';
 import nodemailer from 'nodemailer';
+import fs from 'fs';
+
+
+require('dotenv').config() 
 
 export async function POST(req: Request) {
+  console.log('Environment Variables Loaded:', process.env);
+  console.log('REACT_APP_GMAIL_USER:', process.env.NEXT_GMAIL_USER); // Log GMAIL_USER
+  console.log('REACT_APP_GMAIL_APP_PASSWORD:', process.env.NEXT_GMAIL_APP_PASSWORD); // Log GMAIL_APP_PASSWORD
+
+
   const { firstName, lastName, email, phone, childAbility } = await req.json();
 
+  // Validate required fields
   if (!firstName || !lastName || !email || !phone || !childAbility) {
-    return new Response(JSON.stringify({ message: 'All fields are required' }), { status: 400 });
+    return new Response(JSON.stringify({ message: 'All fields are required' }), { 
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
-
-  // Configure your email transporter
+  // Configure Gmail transporter
   const transporter = nodemailer.createTransport({
-    host: 'smtp-mail.outlook.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    service: 'gmail',  // Using Gmail service
     auth: {
-      user: 'EMAIL', // Your email
-      pass: 'PASSWORD',  // Your email password
+      user: process.env.NEXT_GMAIL_USER,
+      pass: process.env.NEXT_GMAIL_APP_PASSWORD 
     },
   });
 
   try {
+    // Send email
     await transporter.sendMail({
-      from: '"Ace Exams" <ace.exams@outlook.com>', // Sender's name and email
-      to: 'ace.exams@outlook.com', // Receiver's email
-      subject: 'New Tutoring Signup', // Subject line
+      from: 'ace.exams.smtp@gmail.com',  // Your Gmail address
+      to: 'ace.exams@outlook.com',   // Where you want to receive the form submissions
+      subject: 'New Tutoring Signup',
       html: `
         <h1>New Tutoring Signup</h1>
         <p><strong>First Name:</strong> ${firstName}</p>
@@ -33,9 +45,18 @@ export async function POST(req: Request) {
       `,
     });
 
-    return new Response(JSON.stringify({ message: 'Email sent successfully' }), { status: 200 });
+    return new Response(JSON.stringify({ message: 'Email sent successfully' }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
   } catch (error) {
     console.error('Error sending email:', error);
-    return new Response(JSON.stringify({ message: 'Failed to send email' }), { status: 500 });
+    return new Response(JSON.stringify({ 
+      message: 'Failed to send email',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 }
