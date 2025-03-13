@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
@@ -56,7 +58,10 @@ const TutoringHomepage = () => {
               Building knowledge, confidence and excellence in mathematics through group sessions and <span className="whitespace-nowrap">1-on-1 tutoring</span> 
             </p>
             <div className="space-x-4">
-              <Button className="text-xl bg-sky-600 hover:bg-sky-700 font-sans font-bold">
+              <Button 
+                className="text-xl bg-sky-600 hover:bg-sky-700 font-sans font-bold" 
+                onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Book your FREE trial lesson today!
               </Button>
             </div>
@@ -226,7 +231,7 @@ const TutoringHomepage = () => {
 
 
       {/* Sign-Up Form Section */}
-      <div className="bg-sky-100 py-16 px-4">
+      <div id="signup-form" className="bg-sky-100 py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-[#021141] text-center mb-8">
             Sign Up for a Free Trial Lesson
@@ -234,6 +239,7 @@ const TutoringHomepage = () => {
           <FormComponent />
         </div>
       </div>
+
 
 
 
