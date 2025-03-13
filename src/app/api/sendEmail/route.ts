@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     // Send email
     await transporter.sendMail({
       from: 'ace.exams.smtp@gmail.com',  // Your Gmail address
-      to: 'ace.exams@outlook.com',   // Where you want to receive the form submissions
+      to: process.env.NEXT_RECEIVE_EMAIL,   // Where you want to receive the form submissions
       subject: 'New Tutoring Signup',
       html: `
         <h1>New Tutoring Signup</h1>
